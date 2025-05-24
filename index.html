@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Degree to Radian Converter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .container {
+      background-color: #1e1e1e;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #ffffff;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      background-color: #2a2a2a;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #00b894;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 24px;
+      background-color: #00b894;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      background-color: #01a383;
+      transform: scale(1.05);
+    }
+
+    .result {
+      margin-top: 1.2rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .result.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 1.5rem 2rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Degree to Radian Converter</h1>
+    <input type="number" id="degreeInput" placeholder="Enter degrees" />
+    <br />
+    <button onclick="convertToRadian()">Convert</button>
+    <div class="result" id="result"></div>
+    <div class="footer">Created by Tanvir</div>
+  </div>
+
+  <script>
+    function convertToRadian() {
+      const input = document.getElementById("degreeInput");
+      const result = document.getElementById("result");
+      const degree = parseFloat(input.value);
+
+      if (isNaN(degree)) {
+        result.textContent = "Please enter a valid number.";
+        result.classList.add("show");
+        return;
+      }
+
+      const radian = (degree * Math.PI) / 180;
+      result.textContent = `${degree}° = ${radian.toFixed(4)} radians`;
+      result.classList.add("show");
+    }
+  </script>
+
+</body>
+</html>
